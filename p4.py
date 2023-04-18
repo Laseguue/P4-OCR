@@ -284,10 +284,55 @@ def main():
                     print("Tournoi introuvable.")
             elif choix == '6':
                 # Clôturer un tournoi
-                pass
+                print("\nListe des tournois:")
+                for tournoi in gestionnaire.tournois:
+                    print(f"{tournoi.nom}")
+
+                nom_tournoi = input("Entrez le nom du tournoi à clôturer: ")
+                tournoi = None
+                for t in gestionnaire.tournois:
+                    if t.nom == nom_tournoi:
+                        tournoi = t
+                        break
+
+                if tournoi:
+                    if len(tournoi.tours) == tournoi.nombre_tours:
+                        classement = gestionnaire.cloturer_tournoi(tournoi)
+                        print(f"\nClassement du tournoi {nom_tournoi}:")
+                        for i, joueur in enumerate(classement, start=1):
+                            print(f"{i}. {joueur.prenom} {joueur.nom} - {joueur.points} points")
+                    else:
+                        print("Le tournoi n'est pas encore terminé.")
+                else:
+                    print("Tournoi introuvable.")
+
             elif choix == '7':
                 # Afficher les résultats d'un tournoi
-                pass
+                print("\nListe des tournois:")
+                for tournoi in gestionnaire.tournois:
+                    print(f"{tournoi.nom}")
+
+                nom_tournoi = input("Entrez le nom du tournoi dont vous voulez afficher les résultats: ")
+                tournoi = None
+                for t in gestionnaire.tournois:
+                    if t.nom == nom_tournoi:
+                        tournoi = t
+                        break
+
+                if tournoi:
+                    resultats = gestionnaire.afficher_resultats_tournoi(tournoi)
+                    if len(tournoi.tours) == tournoi.nombre_tours:
+                        print(f"\nClassement final du tournoi {nom_tournoi}:")
+                        for i, joueur in enumerate(resultats, start=1):
+                            print(f"{i}. {joueur.prenom} {joueur.nom} - {joueur.points} points")
+                    else:
+                        dernier_tour, points_actuels = resultats
+                        print(f"\nDernier tour effectué: {tournoi.tour_actuel}")
+                        print("Liste des joueurs avec leurs points actuels:")
+                        for joueur, points in zip(tournoi.joueurs, points_actuels):
+                            print(f"{joueur.prenom} {joueur.nom} - {points} points")
+                else:
+                    print("Tournoi introuvable.")
             elif choix == '8':
                 # Afficher la liste des tournois
                 liste_tournois = gestionnaire.afficher_liste_tournois()
