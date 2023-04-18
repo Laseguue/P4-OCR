@@ -114,3 +114,65 @@ class GestionnaireTournois:
 
     def afficher_tous_les_joueurs(self):
         return self.joueurs
+
+def menu_principal():
+        print("\nMenu principal:")
+        print("1. Créer un tournoi")
+        print("2. Créer un joueur")
+        print("3. Ajouter un joueur à un tournoi")
+        print("4. Lancer un tournoi")
+        print("5. Lancer le tour suivant")
+        print("6. Clôturer un tournoi")
+        print("7. Afficher les résultats d'un tournoi")
+        print("8. Afficher la liste des tournois")
+        print("9. Afficher la liste des joueurs d'un tournoi par ordre alphabétique")
+        print("10. Afficher tous les joueurs")
+        print("11. Quitter")
+
+def main():
+        gestionnaire = GestionnaireTournois()
+        gestionnaire.charger_tournois()
+        gestionnaire.charger_joueurs()
+
+        while True:
+            menu_principal()
+            choix = input("Entrez le numéro de l'option choisie: ")
+            
+            if choix == '1':
+                # Créer un tournoi
+                pass
+            elif choix == '2':
+                # Créer un joueur
+                pass
+            elif choix == '3':
+                # Ajouter un joueur à un tournoi
+                pass
+            elif choix == '4':
+                # Lancer un tournoi
+                pass
+            elif choix == '5':
+                # Lancer le tour suivant
+                pass
+            elif choix == '6':
+                # Clôturer un tournoi
+                pass
+            elif choix == '7':
+                # Afficher les résultats d'un tournoi
+                pass
+            elif choix == '8':
+                # Afficher la liste des tournois
+                pass
+            elif choix == '9':
+                # Afficher la liste des joueurs d'un tournoi par ordre alphabétique
+                pass
+            elif choix == '10':
+                # Afficher tous les joueurs
+                pass
+            elif choix == '11':
+                # Quitter
+                break
+            else:
+                print("Choix invalide. Veuillez entrer un numéro entre 1 et 11.")
+
+if __name__ == '__main__':
+    main()
