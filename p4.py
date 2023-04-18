@@ -23,6 +23,7 @@ class Tournoi:
         self.description = description
         self.tours = []
         self.classement = []
+        self.tour_actuel = 0
 
 class GestionnaireTournois:
     def __init__(self):
@@ -71,6 +72,7 @@ class GestionnaireTournois:
             random.shuffle(joueurs)
             paires = [(joueurs[i], joueurs[i+1]) for i in range(0, len(joueurs), 2)]
             tournoi.tours.append(paires)
+            tournoi.tour_actuel += 1
             self.sauvegarder_tournois()
             return paires
         else:
@@ -93,8 +95,22 @@ class GestionnaireTournois:
     def lancer_tour_suivant(self, tournoi):
         if len(tournoi.tours) < tournoi.nombre_tours:
             joueurs_tries = sorted(tournoi.joueurs, key=lambda x: x.points, reverse=True)
-            paires = [(joueurs_tries[i], joueurs_tries[i + 1]) for i in range(0, len(joueurs_tries), 2)]
+            paires = []
+            while len(joueurs_tries) > 1:
+                joueur1 = joueurs_tries.pop(0)
+                joueur2 = None
+                for joueur in joueurs_tries:
+                    if (joueur1, joueur) not in tournoi.tours[-1] and (joueur, joueur1) not in tournoi.tours[-1]:
+                        joueur2 = joueur
+                        break
+                if joueur2:
+                    paires.append((joueur1, joueur2))
+                    joueurs_tries.remove(joueur2)
+                else:
+                    paires.append((joueur1, joueurs_tries.pop(0)))
+
             tournoi.tours.append(paires)
+            tournoi.tour_actuel += 1
             self.sauvegarder_tournois()
             return paires
         else:
@@ -200,10 +216,72 @@ def main():
                     print("Tournoi introuvable. Veuillez vérifier le nom du tournoi.")
             elif choix == '4':
                 # Lancer un tournoi
-                pass
+                print("\nListe des tournois:")
+                for tournoi in gestionnaire.tournois:
+                    print(f"{tournoi.nom} - {tournoi.lieu}")
+
+                nom_tournoi = input("Entrez le nom du tournoi à lancer: ")
+                tournoi = None
+                for t in gestionnaire.tournois:
+                    if t.nom == nom_tournoi:
+                        tournoi = t
+                        break
+
+                if tournoi:
+                    paires = gestionnaire.lancer_tournoi(tournoi)
+                    print(f"\nTour 1 du tournoi {nom_tournoi}:")
+                    for i, (joueur1, joueur2) in enumerate(paires, start=1):
+                        print(f"Match {i}: {joueur1.prenom} {joueur1.nom} VS {joueur2.prenom} {joueur2.nom}")
+
+                    resultat_tour = []
+                    for i, (joueur1, joueur2) in enumerate(paires, start=1):
+                        print(f"\nMatch {i}: {joueur1.prenom} {joueur1.nom} VS {joueur2.prenom} {joueur2.nom}")
+                        resultat = input("Entrez le gagnant (1 pour Joueur 1, 2 pour Joueur 2, 0.5 pour égalité): ")
+                        resultat_tour.append(resultat)
+
+                    gestionnaire.saisir_resultats_tour(tournoi, resultat_tour)
+                    print("\nRésultats du tour 1:")
+                    for joueur in tournoi.joueurs:
+                        print(f"{joueur.prenom} {joueur.nom}: {joueur.points} points")
+                else:
+                    print("Tournoi introuvable.")
             elif choix == '5':
                 # Lancer le tour suivant
-                pass
+                print("\nListe des tournois:")
+                for tournoi in gestionnaire.tournois:
+                    print(f"{tournoi.nom} - {tournoi.lieu}")
+
+                nom_tournoi = input("Entrez le nom du tournoi pour lequel vous voulez lancer le tour suivant: ")
+                tournoi = None
+                for t in gestionnaire.tournois:
+                    if t.nom == nom_tournoi:
+                        tournoi = t
+                        break
+
+                if tournoi:
+                    if tournoi.tour_actuel >= tournoi.nombre_tours:
+                        print("Tous les tours sont déjà effectués.")
+                    else:
+                        paires = gestionnaire.lancer_tour_suivant(tournoi)
+                        print(f"\nTour {tournoi.tour_actuel} du tournoi {nom_tournoi}:")
+                        for i, (joueur1, joueur2) in enumerate(paires, start=1):
+                            print(f"Match {i}: {joueur1.prenom} {joueur1.nom} VS {joueur2.prenom} {joueur2.nom}")
+
+                        if tournoi.tour_actuel == tournoi.nombre_tours:
+                            print("C'est le dernier tour du tournoi.")
+
+                        resultat_tour = []
+                        for i, (joueur1, joueur2) in enumerate(paires, start=1):
+                            print(f"\nMatch {i}: {joueur1.prenom} {joueur1.nom} VS {joueur2.prenom} {joueur2.nom}")
+                            resultat = input("Entrez le gagnant (1 pour Joueur 1, 2 pour Joueur 2, 0.5 pour égalité): ")
+                            resultat_tour.append(resultat)
+
+                        gestionnaire.saisir_resultats_tour(tournoi, resultat_tour)
+                        print("\nRésultats du tour:")
+                        for joueur in tournoi.joueurs:
+                            print(f"{joueur.prenom} {joueur.nom}: {joueur.points} points")
+                else:
+                    print("Tournoi introuvable.")
             elif choix == '6':
                 # Clôturer un tournoi
                 pass
