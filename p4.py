@@ -1,6 +1,8 @@
 import os
 import jsonpickle
 import random
+import glob
+
 
 class Joueur:
     def __init__(self, nom, prenom, date_naissance, numero_national_echec):
@@ -28,13 +30,17 @@ class GestionnaireTournois:
         self.joueurs = []
 
     def charger_tournois(self):
-        if os.path.exists('tournois.json'):
-            with open('tournois.json', 'r') as f:
-                self.tournois = jsonpickle.decode(f.read())
+        self.tournois = []
+        for fichier in glob.glob('tournoi_*.json'):
+            with open(fichier, 'r') as f:
+                tournoi = jsonpickle.decode(f.read())
+                self.tournois.append(tournoi)
 
     def sauvegarder_tournois(self):
-        with open('tournois.json', 'w') as f:
-            f.write(jsonpickle.encode(self.tournois))
+        for tournoi in self.tournois:
+            nom_fichier = f"tournoi_{tournoi.nom}.json"
+            with open(nom_fichier, 'w') as f:
+                f.write(jsonpickle.encode(tournoi))
 
     def charger_joueurs(self):
         if os.path.exists('joueurs.json'):
@@ -140,7 +146,16 @@ def main():
 
             if choix == '1':
                 # Créer un tournoi
-                pass
+                nom = input("Entrez le nom du tournoi: ")
+                lieu = input("Entrez le lieu du tournoi: ")
+                date_debut = input("Entrez la date de début du tournoi (AAAA-MM-JJ): ")
+                date_fin = input("Entrez la date de fin du tournoi (AAAA-MM-JJ): ")
+                nombre_tours = int(input("Entrez le nombre de tours: "))
+                description = input("Entrez une description pour le tournoi: ")
+                joueurs = []
+                gestionnaire.creer_tournoi(nom, lieu, date_debut, date_fin, nombre_tours, joueurs, description)
+                print(f"Le tournoi '{nom}' a été créé avec succès.")
+
             elif choix == '2':
                 # Créer un joueur
                 pass
