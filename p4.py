@@ -1,5 +1,5 @@
 import os
-import json
+import jsonpickle
 import random
 
 class Joueur:
@@ -30,20 +30,20 @@ class GestionnaireTournois:
     def charger_tournois(self):
         if os.path.exists('tournois.json'):
             with open('tournois.json', 'r') as f:
-                self.tournois = json.load(f)
+                self.tournois = jsonpickle.decode(f.read())
 
     def sauvegarder_tournois(self):
         with open('tournois.json', 'w') as f:
-            json.dump(self.tournois, f)
+            f.write(jsonpickle.encode(self.tournois))
 
     def charger_joueurs(self):
         if os.path.exists('joueurs.json'):
             with open('joueurs.json', 'r') as f:
-                self.joueurs = json.load(f)
+                self.joueurs = jsonpickle.decode(f.read())
 
     def sauvegarder_joueurs(self):
         with open('joueurs.json', 'w') as f:
-            json.dump(self.joueurs, f)
+            f.write(jsonpickle.encode(self.joueurs))
 
     def creer_tournoi(self, nom, lieu, date_debut, date_fin, nombre_tours, joueurs, description):
         tournoi = Tournoi(nom, lieu, date_debut, date_fin, nombre_tours, joueurs, description)
@@ -137,7 +137,7 @@ def main():
         while True:
             menu_principal()
             choix = input("Entrez le numéro de l'option choisie: ")
-            
+
             if choix == '1':
                 # Créer un tournoi
                 pass
@@ -161,13 +161,17 @@ def main():
                 pass
             elif choix == '8':
                 # Afficher la liste des tournois
-                pass
+                liste_tournois = gestionnaire.afficher_liste_tournois()
+                for tournoi in liste_tournois:
+                    print(jsonpickle.encode(tournoi))
             elif choix == '9':
                 # Afficher la liste des joueurs d'un tournoi par ordre alphabétique
                 pass
             elif choix == '10':
                 # Afficher tous les joueurs
-                pass
+                liste_joueurs = gestionnaire.afficher_tous_les_joueurs()
+                for joueur in liste_joueurs:
+                    print(jsonpickle.encode(joueur))
             elif choix == '11':
                 # Quitter
                 break
@@ -176,3 +180,5 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+
