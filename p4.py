@@ -213,16 +213,36 @@ def main():
             elif choix == '8':
                 # Afficher la liste des tournois
                 liste_tournois = gestionnaire.afficher_liste_tournois()
+                print("\nListe des tournois:")
                 for tournoi in liste_tournois:
-                    print(jsonpickle.encode(tournoi))
+                    print(f"{tournoi.nom} - {tournoi.lieu}")
             elif choix == '9':
                 # Afficher la liste des joueurs d'un tournoi par ordre alphabétique
-                pass
+                print("\nListe des tournois:")
+                for tournoi in gestionnaire.tournois:
+                    print(f"{tournoi.nom} - {tournoi.lieu}")
+
+                nom_tournoi = input("Entrez le nom du tournoi pour lequel vous voulez afficher les joueurs: ")
+                tournoi = None
+                for t in gestionnaire.tournois:
+                    if t.nom == nom_tournoi:
+                        tournoi = t
+                        break
+
+                if tournoi:
+                    liste_joueurs = gestionnaire.afficher_liste_joueurs_tournoi(tournoi)
+                    print(f"\nListe des joueurs du tournoi {nom_tournoi} par ordre alphabétique:")
+                    for joueur in liste_joueurs:
+                        print(f"{joueur.prenom} {joueur.nom}")
+                else:
+                    print("Tournoi introuvable.")
             elif choix == '10':
                 # Afficher tous les joueurs
                 liste_joueurs = gestionnaire.afficher_tous_les_joueurs()
+                print("\nListe des joueurs:")
                 for joueur in liste_joueurs:
-                    print(jsonpickle.encode(joueur))
+                    print(f"{joueur.prenom} {joueur.nom} - {joueur.numero_national_echec}")
+
             elif choix == '11':
                 # Quitter
                 break
