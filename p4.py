@@ -168,7 +168,36 @@ def main():
 
             elif choix == '3':
                 # Ajouter un joueur à un tournoi
-                pass
+                print("\nListe des tournois:")
+                for tournoi in gestionnaire.tournois:
+                    print(f"{tournoi.nom}")
+                nom_tournoi = input("Entrez le nom du tournoi auquel vous souhaitez ajouter un joueur: ")
+                tournoi = None
+
+                for t in gestionnaire.tournois:
+                    if t.nom == nom_tournoi:
+                        tournoi = t
+                        break
+
+                if tournoi:
+                    print("\nListe des joueurs avec leur numéro national d'échecs:")
+                    for joueur in gestionnaire.joueurs:
+                        print(f"{joueur.numero_national_echec} - {joueur.prenom} {joueur.nom}")
+                    numero_national_echec = input("Entrez le numéro national d'échecs du joueur à ajouter: ")
+                    joueur = None
+
+                    for j in gestionnaire.joueurs:
+                        if j.numero_national_echec == numero_national_echec:
+                            joueur = j
+                            break
+
+                    if joueur:
+                        gestionnaire.ajouter_joueur_tournoi(joueur, tournoi)
+                        print(f"Joueur {joueur.prenom} {joueur.nom} ajouté au tournoi '{tournoi.nom}' avec succès.")
+                    else:
+                        print("Joueur introuvable. Veuillez vérifier le numéro national d'échecs.")
+                else:
+                    print("Tournoi introuvable. Veuillez vérifier le nom du tournoi.")
             elif choix == '4':
                 # Lancer un tournoi
                 pass
