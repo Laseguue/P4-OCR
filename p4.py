@@ -43,12 +43,12 @@ class GestionnaireTournois:
                 f.write(jsonpickle.encode(tournoi))
 
     def charger_joueurs(self):
-        if os.path.exists('joueurs.json'):
-            with open('joueurs.json', 'r') as f:
+        if os.path.exists('liste_des_joueurs.json'):
+            with open('liste_des_joueurs.json', 'r') as f:
                 self.joueurs = jsonpickle.decode(f.read())
 
     def sauvegarder_joueurs(self):
-        with open('joueurs.json', 'w') as f:
+        with open('liste_des_joueurs.json', 'w') as f:
             f.write(jsonpickle.encode(self.joueurs))
 
     def creer_tournoi(self, nom, lieu, date_debut, date_fin, nombre_tours, joueurs, description):
@@ -158,7 +158,14 @@ def main():
 
             elif choix == '2':
                 # Créer un joueur
-                pass
+                nom = input("Entrez le nom du joueur: ")
+                prenom = input("Entrez le prénom du joueur: ")
+                date_naissance = input("Entrez la date de naissance du joueur (AAAA-MM-JJ): ")
+                numero_national_echec = input("Entrez le numéro national d'échecs du joueur: ")
+
+                gestionnaire.creer_joueur(nom, prenom, date_naissance, numero_national_echec)
+                print(f"Joueur {prenom} {nom} créé avec succès.")
+
             elif choix == '3':
                 # Ajouter un joueur à un tournoi
                 pass
