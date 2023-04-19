@@ -2,6 +2,7 @@ import os
 import jsonpickle
 import random
 import glob
+import json
 
 
 class Joueur:
@@ -67,7 +68,9 @@ class GestionnaireTournois:
         self.sauvegarder_tournois()
 
     def lancer_tournoi(self, tournoi):
-        if len(tournoi.tours) < tournoi.nombre_tours:
+        if tournoi.tours:
+            return False
+        elif len(tournoi.tours) < tournoi.nombre_tours:
             joueurs = list(tournoi.joueurs)
             random.shuffle(joueurs)
             paires = [(joueurs[i], joueurs[i+1]) for i in range(0, len(joueurs), 2)]
@@ -123,10 +126,10 @@ class GestionnaireTournois:
         return classement
 
     def afficher_resultats_tournoi(self, tournoi):
-        if len(tournoi.tours) == tournoi.nombre_tours:
-            return tournoi.classement
+        if not tournoi.tours:
+            return None
         else:
-            return tournoi.tours[-1], [joueur.points for joueur in tournoi.joueurs]
+            return tournoi.tours, [joueur.points for joueur in tournoi.joueurs]
 
     def afficher_liste_tournois(self):
         return self.tournois
@@ -135,7 +138,34 @@ class GestionnaireTournois:
         return sorted(tournoi.joueurs, key=lambda x: x.nom)
 
     def afficher_tous_les_joueurs(self):
-        return self.joueurs
+        return sorted(self.joueurs, key=lambda joueur: joueur.nom)
+    
+    def rechercher_tournoi(self, nom_tournoi):
+        tournoi = None
+        for t in self.tournois:
+            if t.nom == nom_tournoi:
+                tournoi = t
+                break
+
+        if tournoi:
+            print(f"\nTournoi {tournoi.nom}:")
+            print(f"Date de début: {tournoi.date_debut}")
+            print(f"Date de fin: {tournoi.date_fin}")
+            print(f"Description: {tournoi.description}")
+        else:
+            print("Tournoi introuvable.")
+    
+    def convertir_json_en_txt(self, nom_fichier):
+        try:
+            with open(nom_fichier + ".json", "r") as json_file:
+                data = json.load(json_file)
+
+            with open(nom_fichier + ".txt", "w") as txt_file:
+                txt_file.write(json.dumps(data, indent=4))
+
+            print(f"Le fichier {nom_fichier}.json a été converti en {nom_fichier}.txt avec succès.")
+        except FileNotFoundError:
+            print("Fichier JSON introuvable.")
 
 def menu_principal():
         print("\nMenu principal:")
@@ -149,7 +179,9 @@ def menu_principal():
         print("8. Afficher la liste des tournois")
         print("9. Afficher la liste des joueurs d'un tournoi par ordre alphabétique")
         print("10. Afficher tous les joueurs")
-        print("11. Quitter")
+        print("11. Rechercher un tournoi")
+        print("12. Convertir JSON en texte")
+        print("13. Quitter")
 
 def main():
         gestionnaire = GestionnaireTournois()
@@ -166,7 +198,12 @@ def main():
                 lieu = input("Entrez le lieu du tournoi: ")
                 date_debut = input("Entrez la date de début du tournoi (AAAA-MM-JJ): ")
                 date_fin = input("Entrez la date de fin du tournoi (AAAA-MM-JJ): ")
-                nombre_tours = int(input("Entrez le nombre de tours: "))
+                while True:
+                    try:
+                        nombre_tours = int(input("Entrez le nombre de tours: "))
+                        break
+                    except ValueError:
+                        print("Erreur : Veuillez entrer un nombre valide.")
                 description = input("Entrez une description pour le tournoi: ")
                 joueurs = []
                 gestionnaire.creer_tournoi(nom, lieu, date_debut, date_fin, nombre_tours, joueurs, description)
@@ -229,20 +266,29 @@ def main():
 
                 if tournoi:
                     paires = gestionnaire.lancer_tournoi(tournoi)
-                    print(f"\nTour 1 du tournoi {nom_tournoi}:")
-                    for i, (joueur1, joueur2) in enumerate(paires, start=1):
-                        print(f"Match {i}: {joueur1.prenom} {joueur1.nom} VS {joueur2.prenom} {joueur2.nom}")
+                    if paires is False:
+                        print("Le tournoi est déjà en cours ou terminé.")
+                    elif paires is not None:
+                        print(f"\nTour 1 du tournoi {nom_tournoi}:")
+                        for i, (joueur1, joueur2) in enumerate(paires, start=1):
+                            print(f"Match {i}: {joueur1.prenom} {joueur1.nom} VS {joueur2.prenom} {joueur2.nom}")
 
-                    resultat_tour = []
-                    for i, (joueur1, joueur2) in enumerate(paires, start=1):
-                        print(f"\nMatch {i}: {joueur1.prenom} {joueur1.nom} VS {joueur2.prenom} {joueur2.nom}")
-                        resultat = input("Entrez le gagnant (1 pour Joueur 1, 2 pour Joueur 2, 0.5 pour égalité): ")
-                        resultat_tour.append(resultat)
+                        resultat_tour = []
+                        for i, (joueur1, joueur2) in enumerate(paires, start=1):
+                            print(f"\nMatch {i}: {joueur1.prenom} {joueur1.nom} VS {joueur2.prenom} {joueur2.nom}")
+                            while True:
+                                resultat = input("Entrez le gagnant (1 pour Joueur 1, 2 pour Joueur 2, 0.5 pour égalité): ")
 
-                    gestionnaire.saisir_resultats_tour(tournoi, resultat_tour)
-                    print("\nRésultats du tour 1:")
-                    for joueur in tournoi.joueurs:
-                        print(f"{joueur.prenom} {joueur.nom}: {joueur.points} points")
+                                if resultat in ('1', '2', '0.5'):
+                                    break
+                                else:
+                                    print("Erreur : Veuillez entrer un choix valide (1, 2 ou 0.5).")
+                            resultat_tour.append(resultat)
+
+                        gestionnaire.saisir_resultats_tour(tournoi, resultat_tour)
+                        print("\nRésultats du tour 1:")
+                        for joueur in tournoi.joueurs:
+                            print(f"{joueur.prenom} {joueur.nom}: {joueur.points} points")
                 else:
                     print("Tournoi introuvable.")
             elif choix == '5':
@@ -273,7 +319,13 @@ def main():
                         resultat_tour = []
                         for i, (joueur1, joueur2) in enumerate(paires, start=1):
                             print(f"\nMatch {i}: {joueur1.prenom} {joueur1.nom} VS {joueur2.prenom} {joueur2.nom}")
-                            resultat = input("Entrez le gagnant (1 pour Joueur 1, 2 pour Joueur 2, 0.5 pour égalité): ")
+                            while True:
+                                resultat = input("Entrez le gagnant (1 pour Joueur 1, 2 pour Joueur 2, 0.5 pour égalité): ")
+
+                                if resultat in ('1', '2', '0.5'):
+                                    break
+                                else:
+                                    print("Erreur : Veuillez entrer un choix valide (1, 2 ou 0.5).")
                             resultat_tour.append(resultat)
 
                         gestionnaire.saisir_resultats_tour(tournoi, resultat_tour)
@@ -321,16 +373,25 @@ def main():
 
                 if tournoi:
                     resultats = gestionnaire.afficher_resultats_tournoi(tournoi)
-                    if len(tournoi.tours) == tournoi.nombre_tours:
-                        print(f"\nClassement final du tournoi {nom_tournoi}:")
-                        for i, joueur in enumerate(resultats, start=1):
-                            print(f"{i}. {joueur.prenom} {joueur.nom} - {joueur.points} points")
+                    if resultats is None:
+                        print("Le tournoi n'a pas encore commencé.")
                     else:
-                        dernier_tour, points_actuels = resultats
-                        print(f"\nDernier tour effectué: {tournoi.tour_actuel}")
-                        print("Liste des joueurs avec leurs points actuels:")
-                        for joueur, points in zip(tournoi.joueurs, points_actuels):
-                            print(f"{joueur.prenom} {joueur.nom} - {points} points")
+                        tours, points_actuels = resultats
+                        print(f"\nRésultats du tournoi {nom_tournoi}:")
+
+                        for i, tour in enumerate(tours, start=1):
+                            print(f"\nTour {i}:")
+                            for j, (joueur1, joueur2) in enumerate(tour, start=1):
+                                points_joueur1 = points_actuels[tournoi.joueurs.index(joueur1)]
+                                points_joueur2 = points_actuels[tournoi.joueurs.index(joueur2)]
+                                print(f"Match {j}: {joueur1.prenom} {joueur1.nom} ({points_joueur1} points) VS {joueur2.prenom} {joueur2.nom} ({points_joueur2} points)")
+
+                        if len(tournoi.tours) == tournoi.nombre_tours:
+                            print(f"\nClassement final du tournoi {nom_tournoi}:")
+                            for i, joueur in enumerate(sorted(tournoi.joueurs, key=lambda x: x.points, reverse=True), start=1):
+                                print(f"{i}. {joueur.prenom} {joueur.nom} - {joueur.points} points")
+                        else:
+                            print(f"\nIl reste {tournoi.nombre_tours - len(tournoi.tours)} tours avant la fin du tournoi.")
                 else:
                     print("Tournoi introuvable.")
             elif choix == '8':
@@ -362,11 +423,21 @@ def main():
             elif choix == '10':
                 # Afficher tous les joueurs
                 liste_joueurs = gestionnaire.afficher_tous_les_joueurs()
-                print("\nListe des joueurs:")
+                print("\nListe des joueurs par ordre alphabétique:")
                 for joueur in liste_joueurs:
                     print(f"{joueur.prenom} {joueur.nom} - {joueur.numero_national_echec}")
 
             elif choix == '11':
+                # Rechercher un tournoi
+                nom_tournoi = input("Entrez le nom du tournoi à rechercher: ")
+                gestionnaire.rechercher_tournoi(nom_tournoi)
+
+            elif choix == '12':
+                # Convertir un fichier JSON en fichier texte
+                nom_fichier = input("Entrez le nom du fichier JSON à convertir (sans l'extension): ")
+                gestionnaire.convertir_json_en_txt(nom_fichier)
+
+            elif choix == '13':
                 # Quitter
                 break
             else:
