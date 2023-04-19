@@ -167,6 +167,56 @@ class GestionnaireTournois:
         except FileNotFoundError:
             print("Fichier JSON introuvable.")
 
+    def trouver_tournoi(self, nom_tournoi):
+        for tournoi in self.tournois:
+            if tournoi.nom == nom_tournoi:
+                return tournoi
+        return None
+
+
+    def rapport_de_tournoi(self, nom_tournoi):
+        tournoi = self.trouver_tournoi(nom_tournoi)
+
+        if not tournoi:
+            print(f"Le tournoi {nom_tournoi} n'a pas été trouvé.")
+            return
+
+        if tournoi.tour_actuel == 0:
+            print(f"Le tournoi {nom_tournoi} n'a pas encore commencé.")
+            return
+
+        # Vérifie si le tournoi est terminé
+        tournoi_termine = tournoi.tour_actuel >= tournoi.nombre_tours
+
+        with open(f"{nom_tournoi}_rapport.txt", "w", encoding="utf-8") as f:
+            f.write(f"Tournoi: {tournoi.nom}\n")
+            f.write(f"Lieu: {tournoi.lieu}\n")
+            f.write(f"Date de début: {tournoi.date_debut}\n")
+            f.write(f"Date de fin: {tournoi.date_fin}\n")
+            f.write(f"Nombre de tours: {tournoi.nombre_tours}\n")
+            f.write(f"Description: {tournoi.description}\n\n")
+            f.write("Participants:\n")
+
+            for joueur in tournoi.joueurs:
+                f.write(f"- {joueur.nom} {joueur.prenom} (né(e) le {joueur.date_naissance}, n° {joueur.numero_national_echec}) - {joueur.points} points\n")
+
+            f.write("\nTours:\n")
+
+            for i, tour in enumerate(tournoi.tours, start=1):
+                f.write(f"Tour {i}:\n")
+                for j, match in enumerate(tour, start=1):
+                    j1, j2 = match
+                    f.write(f"Match {j}: {j1.nom} {j1.prenom} ({j1.points} points) vs {j2.nom} {j2.prenom} ({j2.points} points)\n")
+
+            if tournoi_termine:
+                f.write("\nClassement :\n")
+                for i, joueur in enumerate(sorted(tournoi.joueurs, key=lambda x: x.points, reverse=True), start=1):
+                    f.write(f"{i}. {joueur.nom} {joueur.prenom} - {joueur.points} points\n")
+            else:
+                f.write("\nLe tournoi n'est pas encore terminé.\n")
+
+        print(f"Le rapport du tournoi {nom_tournoi} a été enregistré dans {nom_tournoi}_rapport.txt")
+
 def menu_principal():
         print("\nMenu principal:")
         print("1. Créer un tournoi")
@@ -181,7 +231,8 @@ def menu_principal():
         print("10. Afficher tous les joueurs")
         print("11. Rechercher un tournoi")
         print("12. Convertir JSON en texte")
-        print("13. Quitter")
+        print("13. Rapport de tournois")
+        print("14. Quitter")
 
 def main():
         gestionnaire = GestionnaireTournois()
@@ -437,7 +488,11 @@ def main():
                 nom_fichier = input("Entrez le nom du fichier JSON à convertir (sans l'extension): ")
                 gestionnaire.convertir_json_en_txt(nom_fichier)
 
-            elif choix == '13':
+            elif choix == "13":
+                nom_tournoi = input("Entrez le nom du tournoi pour lequel vous souhaitez créer un rapport: ")
+                gestionnaire.rapport_de_tournoi(nom_tournoi)
+
+            elif choix == '14':
                 # Quitter
                 break
             else:
