@@ -1,9 +1,15 @@
 from GestionnaireTournois import GestionnaireTournois
 from Joueur import Joueur
 from Tournoi import Tournoi
+from Tour import Tour
+from Match import Match
+from utilities import afficher_conversion_json_txt, afficher_rapport_tournoi, info_tournoi
 
 
 def menu_principal():
+    """
+    Affiche le menu principal avec les différentes options.
+    """
     print("\nMenu principal:")
     print("1. Créer un tournoi")
     print("2. Créer un joueur")
@@ -22,6 +28,9 @@ def menu_principal():
 
 
 def main():
+    """
+    Fonction principale pour exécuter le programme de gestion de tournois d'échecs.
+    """
     gestionnaire = GestionnaireTournois()
     gestionnaire.charger_tournois()
     gestionnaire.charger_joueurs()

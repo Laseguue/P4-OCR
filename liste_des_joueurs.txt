@@ -1,0 +1,34 @@
+[
+    {
+        "py/object": "__main__.Joueur",
+        "nom": "aaa",
+        "prenom": "aaa",
+        "date_naissance": "3333-33-33",
+        "numero_national_echec": "fdfdf",
+        "points": 0
+    },
+    {
+        "py/object": "__main__.Joueur",
+        "nom": "qqq",
+        "prenom": "qqq",
+        "date_naissance": "4444-44-44",
+        "numero_national_echec": "kkkk",
+        "points": 0
+    },
+    {
+        "py/object": "__main__.Joueur",
+        "nom": "ssss",
+        "prenom": "ssss",
+        "date_naissance": "8888-88-88",
+        "numero_national_echec": "dfgh",
+        "points": 0
+    },
+    {
+        "py/object": "__main__.Joueur",
+        "nom": "cccc",
+        "prenom": "cccc",
+        "date_naissance": "8888-88-88",
+        "numero_national_echec": "vfgb",
+        "points": 0
+    }
+]

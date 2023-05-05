@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>P4\utilities.py - flake8 annotated source</title>
+      <meta http-equiv="Content-Type" value="text/html; charset=UTF-8">
+      <link rel="stylesheet" href="styles.css">
+   </head>
+   <body>
+      <div id="masthead" class="sev-2"></div>
+      <div id="page">
+         <h1>
+            <a href="P4.utilities.report.html">
+               <img src="back.svg" alt="&#x2B05;">
+               P4\utilities.py source
+            </a>
+         </h1>
+
+         <div id="doc">
+            <div id="l1"
+               class="code sev- "><tt><i>1</i> <span class="k">def</span> <span class="nf">afficher_conversion_json_txt</span><span class="p">(</span><span class="n">nom_fichier</span><span class="p">,</span> <span class="n">success</span><span class="p">):</span></tt>
+            </div>
+            <div id="l2"
+               class="code sev- "><tt><i>2</i> <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span></tt>
+            </div>
+            <div id="l3"
+               class="code sev-2  le">
+               <ul class="violations">
+               
+                  <li>
+                     <span class="count sev-2">
+                        E501
+                     </span>
+                     Line too long (104 > 79 characters)</li>
+               
+               </ul><tt><i>3</i> <span class="sd">    Affiche un message indiquant si la conversion d&#39;un fichier JSON en fichier texte a réussi ou échoué.</span></tt>
+            </div>
+            <div id="l4"
+               class="code sev- "><tt><i>4</i> &nbsp;</tt>
+            </div>
+            <div id="l5"
+               class="code sev- "><tt><i>5</i> <span class="sd">    :param nom_fichier: str, le nom du fichier (sans extension)</span></tt>
+            </div>
+            <div id="l6"
+               class="code sev-2  le">
+               <ul class="violations">
+               
+                  <li>
+                     <span class="count sev-2">
+                        E501
+                     </span>
+                     Line too long (84 > 79 characters)</li>
+               
+               </ul><tt><i>6</i> <span class="sd">    :param success: bool, indique si la conversion a réussi (True) ou échoué (False)</span></tt>
+            </div>
+            <div id="l7"
+               class="code sev- "><tt><i>7</i> <span class="sd">    &quot;&quot;&quot;</span></tt>
+            </div>
+            <div id="l8"
+               class="code sev- "><tt><i>8</i>     <span class="k">if</span> <span class="n">success</span><span class="p">:</span></tt>
+            </div>
+            <div id="l9"
+               class="code sev-2  le">
+               <ul class="violations">
+               
+                  <li>
+                     <span class="count sev-2">
+                        E501
+                     </span>
+                     Line too long (96 > 79 characters)</li>
+               
+               </ul><tt><i>9</i>         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Le fichier </span><span class="si">{</span><span class="n">nom_fichier</span><span class="si">}</span><span class="s2">.json a été converti en </span><span class="si">{</span><span class="n">nom_fichier</span><span class="si">}</span><span class="s2">.txt avec succès.&quot;</span><span class="p">)</span></tt>
+            </div>
+            <div id="l10"
+               class="code sev- "><tt><i>10</i>     <span class="k">else</span><span class="p">:</span></tt>
+            </div>
+            <div id="l11"
+               class="code sev- "><tt><i>11</i>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fichier JSON introuvable.&quot;</span><span class="p">)</span></tt>
+            </div>
+            <div id="l12"
+               class="code sev- "><tt><i>12</i> &nbsp;</tt>
+            </div>
+            <div id="l13"
+               class="code sev- "><tt><i>13</i> &nbsp;</tt>
+            </div>
+            <div id="l14"
+               class="code sev- "><tt><i>14</i> <span class="k">def</span> <span class="nf">afficher_rapport_tournoi</span><span class="p">(</span><span class="n">nom_tournoi</span><span class="p">,</span> <span class="n">success</span><span class="p">):</span></tt>
+            </div>
+            <div id="l15"
+               class="code sev- "><tt><i>15</i> <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span></tt>
+            </div>
+            <div id="l16"
+               class="code sev-2  le">
+               <ul class="violations">
+               
+                  <li>
+                     <span class="count sev-2">
+                        E501
+                     </span>
+                     Line too long (94 > 79 characters)</li>
+               
+               </ul><tt><i>16</i> <span class="sd">    Affiche un message indiquant si le rapport du tournoi a été enregistré avec succès ou non.</span></tt>
+            </div>
+            <div id="l17"
+               class="code sev- "><tt><i>17</i> &nbsp;</tt>
+            </div>
+            <div id="l18"
+               class="code sev- "><tt><i>18</i> <span class="sd">    :param nom_tournoi: str, le nom du tournoi</span></tt>
+            </div>
+            <div id="l19"
+               class="code sev-2  le">
+               <ul class="violations">
+               
+                  <li>
+                     <span class="count sev-2">
+                        E501
+                     </span>
+                     Line too long (98 > 79 characters)</li>
+               
+               </ul><tt><i>19</i> <span class="sd">    :param success: bool, indique si le rapport a été enregistré avec succès (True) ou non (False)</span></tt>
+            </div>
+            <div id="l20"
+               class="code sev- "><tt><i>20</i> <span class="sd">    &quot;&quot;&quot;</span></tt>
+            </div>
+            <div id="l21"
+               class="code sev- "><tt><i>21</i>     <span class="k">if</span> <span class="n">success</span><span class="p">:</span></tt>
+            </div>
+            <div id="l22"
+               class="code sev-2  le">
+               <ul class="violations">
+               
+                  <li>
+                     <span class="count sev-2">
+                        E501
+                     </span>
+                     Line too long (101 > 79 characters)</li>
+               
+               </ul><tt><i>22</i>         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Le rapport du tournoi </span><span class="si">{</span><span class="n">nom_tournoi</span><span class="si">}</span><span class="s2"> a été enregistré dans </span><span class="si">{</span><span class="n">nom_tournoi</span><span class="si">}</span><span class="s2">_rapport.txt&quot;</span><span class="p">)</span></tt>
+            </div>
+            <div id="l23"
+               class="code sev- "><tt><i>23</i>     <span class="k">else</span><span class="p">:</span></tt>
+            </div>
+            <div id="l24"
+               class="code sev- "><tt><i>24</i>         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Le tournoi </span><span class="si">{</span><span class="n">nom_tournoi</span><span class="si">}</span><span class="s2"> n&#39;a pas été trouvé.&quot;</span><span class="p">)</span></tt>
+            </div>
+            <div id="l25"
+               class="code sev- "><tt><i>25</i> &nbsp;</tt>
+            </div>
+            <div id="l26"
+               class="code sev- "><tt><i>26</i> &nbsp;</tt>
+            </div>
+            <div id="l27"
+               class="code sev- "><tt><i>27</i> <span class="k">def</span> <span class="nf">info_tournoi</span><span class="p">(</span><span class="n">tournoi</span><span class="p">):</span></tt>
+            </div>
+            <div id="l28"
+               class="code sev- "><tt><i>28</i> <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span></tt>
+            </div>
+            <div id="l29"
+               class="code sev-2  le">
+               <ul class="violations">
+               
+                  <li>
+                     <span class="count sev-2">
+                        E501
+                     </span>
+                     Line too long (102 > 79 characters)</li>
+               
+               </ul><tt><i>29</i> <span class="sd">    Affiche les informations d&#39;un tournoi donné, ou un message d&#39;erreur si le tournoi est introuvable.</span></tt>
+            </div>
+            <div id="l30"
+               class="code sev- "><tt><i>30</i> &nbsp;</tt>
+            </div>
+            <div id="l31"
+               class="code sev-2  le">
+               <ul class="violations">
+               
+                  <li>
+                     <span class="count sev-2">
+                        E501
+                     </span>
+                     Line too long (114 > 79 characters)</li>
+               
+               </ul><tt><i>31</i> <span class="sd">    :param tournoi: instance de la classe Tournoi ou None, le tournoi dont les informations doivent être affichées</span></tt>
+            </div>
+            <div id="l32"
+               class="code sev- "><tt><i>32</i> <span class="sd">    &quot;&quot;&quot;</span></tt>
+            </div>
+            <div id="l33"
+               class="code sev- "><tt><i>33</i>     <span class="k">if</span> <span class="n">tournoi</span><span class="p">:</span></tt>
+            </div>
+            <div id="l34"
+               class="code sev- "><tt><i>34</i>         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Tournoi </span><span class="si">{</span><span class="n">tournoi</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2">:&quot;</span><span class="p">)</span></tt>
+            </div>
+            <div id="l35"
+               class="code sev- "><tt><i>35</i>         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Date de début: </span><span class="si">{</span><span class="n">tournoi</span><span class="o">.</span><span class="n">date_debut</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></tt>
+            </div>
+            <div id="l36"
+               class="code sev- "><tt><i>36</i>         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Date de fin: </span><span class="si">{</span><span class="n">tournoi</span><span class="o">.</span><span class="n">date_fin</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></tt>
+            </div>
+            <div id="l37"
+               class="code sev- "><tt><i>37</i>         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Description: </span><span class="si">{</span><span class="n">tournoi</span><span class="o">.</span><span class="n">description</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></tt>
+            </div>
+            <div id="l38"
+               class="code sev- "><tt><i>38</i>     <span class="k">else</span><span class="p">:</span></tt>
+            </div>
+            <div id="l39"
+               class="code sev- "><tt><i>39</i>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tournoi introuvable.&quot;</span><span class="p">)</span></tt>
+            </div>
+            
+         </div>
+      </div>
+   </body>
+</html>

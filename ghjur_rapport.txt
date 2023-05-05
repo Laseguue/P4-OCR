@@ -1,0 +1,16 @@
+Tournoi: ghjur
+Lieu: toulouse
+Date de début: 9999-99-99
+Date de fin: 9999-99-99
+Nombre de tours: 3
+Description: aucune
+
+Participants:
+- aaa aaa (né(e) le 3333-33-33, n° fdfdf) - 1 points
+- cccc cccc (né(e) le 8888-88-88, n° vfgb) - 0 points
+
+Tours:
+Tour 1:
+Match 1: cccc cccc (0 points) vs aaa aaa (1 points)
+
+Le tournoi n'est pas encore terminé.
