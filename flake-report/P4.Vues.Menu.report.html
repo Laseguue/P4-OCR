@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>flake8 violations: P4\Vues\Menu.py</title>
+      <meta http-equiv="Content-Type" value="text/html; charset=UTF-8">
+      <link rel="stylesheet" href="styles.css">
+<script>
+function bindHandler(link) {
+   var code = link.getAttribute('data-code');
+   var key = location.pathname + '#' + code;
+
+   var ul = link.parentNode.querySelector('.details');
+   if (sessionStorage[key] != 'open') {
+      ul.style.display = 'none';
+   }
+   link.addEventListener('click', function (event) {
+      if (!ul.style.display || ul.style.display == 'none') {
+         ul.style.display = 'block';
+         sessionStorage[key] = 'open';
+      } else {
+         ul.style.display = 'none';
+         sessionStorage[key] = 'closed';
+      }
+   });
+}
+
+window.addEventListener('DOMContentLoaded', function () {
+   var links = document.querySelectorAll('#index > li > a');
+   for (var i = 0; i < links.length; i++) {
+      bindHandler(links[i]);
+   }
+});
+</script>
+   </head>
+   <body>
+      <div id="masthead" class="sev-1"></div>
+      <div id="page">
+         <p id="srclink">
+            <a title="View full annotated source"
+               href="P4.Vues.Menu.source.html">
+               <img src="file.svg" alt="&#x2261;">
+            </a></p>
+         <h1>
+            <a href="index.html">
+               <img src="back.svg" alt="&#x2B05;">
+               P4\Vues\Menu.py
+            </a>
+         </h1>
+
+         <ul id="index">
+         
+         <li>
+            <a data-code="F401">
+               <span class="count sev-1">
+                  3
+               </span>
+               <strong>F401:</strong> 'P4.Modeles.Joueur.Joueur' imported but unused
+               
+                  (and 2 similar)
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <p>'P4.Modeles.Joueur.Joueur' imported but unused:</p>
+               
+               <a href="P4.Vues.Menu.source.html#l3">
+                  <tt><i>3</i> <span class="kn">from</span> <span class="nn">P4.Modeles.Joueur</span> <span class="kn">import</span> <span class="n">Joueur</span></tt>
+               </a>
+            </li><li>
+               
+               <p>'P4.Modeles.Tournoi.Tournoi' imported but unused:</p>
+               
+               <a href="P4.Vues.Menu.source.html#l4">
+                  <tt><i>4</i> <span class="kn">from</span> <span class="nn">P4.Modeles.Tournoi</span> <span class="kn">import</span> <span class="n">Tournoi</span></tt>
+               </a>
+            </li><li>
+               
+               <p>'P4.Modeles.Tour.Tour' imported but unused:</p>
+               
+               <a href="P4.Vues.Menu.source.html#l5">
+                  <tt><i>5</i> <span class="kn">from</span> <span class="nn">P4.Modeles.Tour</span> <span class="kn">import</span> <span class="n">Tour</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="E501">
+               <span class="count sev-2">
+                  50
+               </span>
+               <strong>E501:</strong> line too long (81 > 79 characters)
+               
+                  (and 23 similar)
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <p>Line too long (81 > 79 characters):</p>
+               
+               <a href="P4.Vues.Menu.source.html#l18">
+                  <tt><i>18</i>     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;9. Afficher la liste des joueurs d&#39;un tournoi par ordre alphabétique&quot;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (83 > 79 characters):</p>
+               
+               <a href="P4.Vues.Menu.source.html#l38">
+                  <tt><i>38</i>             <span class="n">date_debut</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Entrez la date de début du tournoi (AAAA-MM-JJ): &quot;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (107 > 79 characters):</p>
+               
+               <a href="P4.Vues.Menu.source.html#l48">
+                  <tt><i>48</i>             <span class="n">gestionnaire</span><span class="o">.</span><span class="n">creer_tournoi</span><span class="p">(</span><span class="n">nom</span><span class="p">,</span> <span class="n">lieu</span><span class="p">,</span> <span class="n">date_debut</span><span class="p">,</span> <span class="n">date_fin</span><span class="p">,</span> <span class="n">nombre_tours</span><span class="p">,</span> <span class="n">joueurs</span><span class="p">,</span> <span class="n">description</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (90 > 79 characters):</p>
+               
+               <a href="P4.Vues.Menu.source.html#l54">
+                  <tt><i>54</i>             <span class="n">date_naissance</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Entrez la date de naissance du joueur (AAAA-MM-JJ): &quot;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (91 > 79 characters):</p>
+               
+               <a href="P4.Vues.Menu.source.html#l55">
+                  <tt><i>55</i>             <span class="n">numero_national_echec</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Entrez le numéro national d&#39;échecs du joueur: &quot;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (89 > 79 characters):</p>
+               
+               <a href="P4.Vues.Menu.source.html#l57">
+                  <tt><i>57</i>             <span class="n">gestionnaire</span><span class="o">.</span><span class="n">creer_joueur</span><span class="p">(</span><span class="n">nom</span><span class="p">,</span> <span class="n">prenom</span><span class="p">,</span> <span class="n">date_naissance</span><span class="p">,</span> <span class="n">numero_national_echec</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (106 > 79 characters):</p>
+               
+               <a href="P4.Vues.Menu.source.html#l63">
+                  <tt><i>63</i>                 <span class="c1"># Vérifiez si le tournoi est un dictionnaire ou un objet et obtenez son nom en conséquence</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (101 > 79 characters):</p>
+               
+               <a href="P4.Vues.Menu.source.html#l70">
+                  <tt><i>70</i>             <span class="n">nom_tournoi</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Entrez le nom du tournoi auquel vous souhaitez ajouter un joueur: &quot;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (80 > 79 characters):</p>
+               
+               <a href="P4.Vues.Menu.source.html#l80">
+                  <tt><i>80</i>                 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Liste des joueurs avec leur numéro national d&#39;échecs:&quot;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (104 > 79 characters):</p>
+               
+               <a href="P4.Vues.Menu.source.html#l83">
+                  <tt><i>83</i>                         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">joueur</span><span class="p">[</span><span class="s1">&#39;numero_national_echec&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">joueur</span><span class="p">[</span><span class="s1">&#39;prenom&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">joueur</span><span class="p">[</span><span class="s1">&#39;nom&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (95 > 79 characters):</p>
+               
+               <a href="P4.Vues.Menu.source.html#l85">
+                  <tt><i>85</i>                         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">joueur</span><span class="o">.</span><span class="n">numero_national_echec</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">joueur</span><span class="o">.</span><span class="n">prenom</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">joueur</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (105 > 79 characters):</p>
+               
+               <a href="P4.Vues.Menu.source.html#l87">
+                  <tt><i>87</i>                 <span class="n">numero_national_echec</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Entrez le numéro national d&#39;échecs du joueur à ajouter: &quot;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (99 > 79 characters):</p>
+               
+               <a href="P4.Vues.Menu.source.html#l91">
+                  <tt><i>91</i>                     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span> <span class="ow">and</span> <span class="n">j</span><span class="p">[</span><span class="s1">&#39;numero_national_echec&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">numero_national_echec</span><span class="p">:</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (102 > 79 characters):</p>
+               
+               <a href="P4.Vues.Menu.source.html#l94">
+                  <tt><i>94</i>                     <span class="k">elif</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span> <span class="ow">and</span> <span class="n">j</span><span class="o">.</span><span class="n">numero_national_echec</span> <span class="o">==</span> <span class="n">numero_national_echec</span><span class="p">:</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (116 > 79 characters):</p>
+               
+               <a href="P4.Vues.Menu.source.html#l106">
+                  <tt><i>106</i>                         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Joueur </span><span class="si">{</span><span class="n">joueur</span><span class="o">.</span><span class="n">prenom</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">joueur</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> ajouté au tournoi &#39;</span><span class="si">{</span><span class="n">tournoi</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2">&#39; avec succès.&quot;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (95 > 79 characters):</p>
+               
+               <a href="P4.Vues.Menu.source.html#l108">
+                  <tt><i>108</i>                     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Joueur introuvable. Veuillez vérifier le numéro national d&#39;échecs.&quot;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (82 > 79 characters):</p>
+               
+               <a href="P4.Vues.Menu.source.html#l110">
+                  <tt><i>110</i>                 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tournoi introuvable. Veuillez vérifier le nom du tournoi.&quot;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (118 > 79 characters):</p>
+               
+               <a href="P4.Vues.Menu.source.html#l114">
+                  <tt><i>114</i>                 <span class="c1"># Vérifiez si le tournoi est un dictionnaire ou un objet et obtenez son nom et son lieu en conséquence</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (83 > 79 characters):</p>
+               
+               <a href="P4.Vues.Menu.source.html#l137">
+                  <tt><i>137</i>                     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">joueur1</span><span class="p">,</span> <span class="n">joueur2</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">paires</span><span class="o">.</span><span class="n">matchs</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (89 > 79 characters):</p>
+               
+               <a href="P4.Vues.Menu.source.html#l152">
+                  <tt><i>152</i>                         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Match </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">j1_prenom</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">j1_nom</span><span class="si">}</span><span class="s2"> VS </span><span class="si">{</span><span class="n">j2_prenom</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">j2_nom</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (83 > 79 characters):</p>
+               
+               <a href="P4.Vues.Menu.source.html#l155">
+                  <tt><i>155</i>                     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">joueur1</span><span class="p">,</span> <span class="n">joueur2</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">paires</span><span class="o">.</span><span class="n">matchs</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (91 > 79 characters):</p>
+               
+               <a href="P4.Vues.Menu.source.html#l170">
+                  <tt><i>170</i>                         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Match </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">j1_prenom</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">j1_nom</span><span class="si">}</span><span class="s2"> VS </span><span class="si">{</span><span class="n">j2_prenom</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">j2_nom</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (119 > 79 characters):</p>
+               
+               <a href="P4.Vues.Menu.source.html#l173">
+                  <tt><i>173</i>                             <span class="n">resultat</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Entrez le gagnant (1 pour Joueur 1, 2 pour Joueur 2, 0.5 pour égalité):&quot;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (96 > 79 characters):</p>
+               
+               <a href="P4.Vues.Menu.source.html#l178">
+                  <tt><i>178</i>                                 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Erreur : Veuillez entrer un choix valide (1, 2 ou 0.5).&quot;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (99 > 79 characters):</p>
+               
+               <a href="P4.Vues.Menu.source.html#l185">
+                  <tt><i>185</i>                             <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">joueur</span><span class="p">[</span><span class="s1">&#39;prenom&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">joueur</span><span class="p">[</span><span class="s1">&#39;nom&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">joueur</span><span class="p">[</span><span class="s1">&#39;points&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> points&quot;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (90 > 79 characters):</p>
+               
+               <a href="P4.Vues.Menu.source.html#l187">
+                  <tt><i>187</i>                             <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">joueur</span><span class="o">.</span><span class="n">prenom</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">joueur</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">joueur</span><span class="o">.</span><span class="n">points</span><span class="si">}</span><span class="s2"> points&quot;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (118 > 79 characters):</p>
+               
+               <a href="P4.Vues.Menu.source.html#l194">
+                  <tt><i>194</i>                 <span class="c1"># Vérifiez si le tournoi est un dictionnaire ou un objet et obtenez son nom et son lieu en conséquence</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (108 > 79 characters):</p>
+               
+               <a href="P4.Vues.Menu.source.html#l204">
+                  <tt><i>204</i>             <span class="n">nom_tournoi</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Entrez le nom du tournoi pour lequel vous voulez lancer le tour suivant: &quot;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (84 > 79 characters):</p>
+               
+               <a href="P4.Vues.Menu.source.html#l216">
+                  <tt><i>216</i>                     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Tour </span><span class="si">{</span><span class="n">tournoi</span><span class="o">.</span><span class="n">tour_actuel</span><span class="si">}</span><span class="s2"> du tournoi </span><span class="si">{</span><span class="n">nom_tournoi</span><span class="si">}</span><span class="s2">:&quot;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (81 > 79 characters):</p>
+               
+               <a href="P4.Vues.Menu.source.html#l217">
+                  <tt><i>217</i>                     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">joueur1</span><span class="p">,</span> <span class="n">joueur2</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">tour</span><span class="o">.</span><span class="n">matchs</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (81 > 79 characters):</p>
+               
+               <a href="P4.Vues.Menu.source.html#l232">
+                  <tt><i>232</i>                         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Match </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">prenom1</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">nom1</span><span class="si">}</span><span class="s2"> VS </span><span class="si">{</span><span class="n">prenom2</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">nom2</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (81 > 79 characters):</p>
+               
+               <a href="P4.Vues.Menu.source.html#l238">
+                  <tt><i>238</i>                     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">joueur1</span><span class="p">,</span> <span class="n">joueur2</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">tour</span><span class="o">.</span><span class="n">matchs</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (83 > 79 characters):</p>
+               
+               <a href="P4.Vues.Menu.source.html#l253">
+                  <tt><i>253</i>                         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Match </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">prenom1</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">nom1</span><span class="si">}</span><span class="s2"> VS </span><span class="si">{</span><span class="n">prenom2</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">nom2</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (119 > 79 characters):</p>
+               
+               <a href="P4.Vues.Menu.source.html#l255">
+                  <tt><i>255</i>                             <span class="n">resultat</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Entrez le gagnant (1 pour Joueur 1, 2 pour Joueur 2, 0.5 pour égalité):&quot;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (96 > 79 characters):</p>
+               
+               <a href="P4.Vues.Menu.source.html#l260">
+                  <tt><i>260</i>                                 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Erreur : Veuillez entrer un choix valide (1, 2 ou 0.5).&quot;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (106 > 79 characters):</p>
+               
+               <a href="P4.Vues.Menu.source.html#l282">
+                  <tt><i>282</i>                 <span class="c1"># Vérifiez si le tournoi est un dictionnaire ou un objet et obtenez son nom en conséquence</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (106 > 79 characters):</p>
+               
+               <a href="P4.Vues.Menu.source.html#l320">
+                  <tt><i>320</i>                 <span class="c1"># Vérifiez si le tournoi est un dictionnaire ou un objet et obtenez son nom en conséquence</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (101 > 79 characters):</p>
+               
+               <a href="P4.Vues.Menu.source.html#l328">
+                  <tt><i>328</i>             <span class="n">nom_tournoi</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Entrez le nom du tournoi dont vous voulez afficher les résultats: &quot;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (101 > 79 characters):</p>
+               
+               <a href="P4.Vues.Menu.source.html#l345">
+                  <tt><i>345</i>                         <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="p">(</span><span class="n">joueur1</span><span class="p">,</span> <span class="n">score1</span><span class="p">,</span> <span class="n">joueur2</span><span class="p">,</span> <span class="n">score2</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">tour</span><span class="o">.</span><span class="n">matchs</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (103 > 79 characters):</p>
+               
+               <a href="P4.Vues.Menu.source.html#l360">
+                  <tt><i>360</i>                             <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Match </span><span class="si">{</span><span class="n">j</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">prenom1</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">nom1</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">score1</span><span class="si">}</span><span class="s2"> VS </span><span class="si">{</span><span class="n">score2</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">prenom2</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">nom2</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (95 > 79 characters):</p>
+               
+               <a href="P4.Vues.Menu.source.html#l367">
+                  <tt><i>367</i>                                 <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;points&#39;</span><span class="p">]</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span> <span class="k">else</span> <span class="n">x</span><span class="o">.</span><span class="n">points</span><span class="p">,</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (119 > 79 characters):</p>
+               
+               <a href="P4.Vues.Menu.source.html#l384">
+                  <tt><i>384</i>                         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Il reste </span><span class="si">{</span><span class="n">tournoi</span><span class="o">.</span><span class="n">nombre_tours</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">tournoi</span><span class="o">.</span><span class="n">tours</span><span class="p">)</span><span class="si">}</span><span class="s2"> tours avant la fin du tournoi.&quot;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (118 > 79 characters):</p>
+               
+               <a href="P4.Vues.Menu.source.html#l391">
+                  <tt><i>391</i>                 <span class="c1"># Vérifiez si le tournoi est un dictionnaire ou un objet et obtenez son nom et son lieu en conséquence</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (118 > 79 characters):</p>
+               
+               <a href="P4.Vues.Menu.source.html#l403">
+                  <tt><i>403</i>                 <span class="c1"># Vérifiez si le tournoi est un dictionnaire ou un objet et obtenez son nom et son lieu en conséquence</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (106 > 79 characters):</p>
+               
+               <a href="P4.Vues.Menu.source.html#l413">
+                  <tt><i>413</i>             <span class="n">nom_tournoi</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Entrez le nom du tournoi pour lequel vous voulez afficher les joueurs: &quot;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (97 > 79 characters):</p>
+               
+               <a href="P4.Vues.Menu.source.html#l416">
+                  <tt><i>416</i>                 <span class="c1"># Vérifiez si t est un dictionnaire ou un objet et obtenez son nom en conséquence</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (84 > 79 characters):</p>
+               
+               <a href="P4.Vues.Menu.source.html#l427">
+                  <tt><i>427</i>                 <span class="n">liste_joueurs</span> <span class="o">=</span> <span class="n">gestionnaire</span><span class="o">.</span><span class="n">afficher_liste_joueurs_tournoi</span><span class="p">(</span><span class="n">tournoi</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (94 > 79 characters):</p>
+               
+               <a href="P4.Vues.Menu.source.html#l428">
+                  <tt><i>428</i>                 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Liste des joueurs du tournoi </span><span class="si">{</span><span class="n">nom_tournoi</span><span class="si">}</span><span class="s2"> par ordre alphabétique:&quot;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (97 > 79 characters):</p>
+               
+               <a href="P4.Vues.Menu.source.html#l461">
+                  <tt><i>461</i>             <span class="n">nom_fichier</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Entrez le nom du fichier JSON à convertir (sans l&#39;extension): &quot;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (105 > 79 characters):</p>
+               
+               <a href="P4.Vues.Menu.source.html#l465">
+                  <tt><i>465</i>             <span class="n">nom_tournoi</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Entrez le nom du tournoi pour lequel vous souhaitez créer un rapport: &quot;</span><span class="p">)</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         </ul>
+      </div>
+   </body>
+</html>

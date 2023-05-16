@@ -1,0 +1,24 @@
+Tournoi: yyyy
+Lieu: yyyy
+Date de début: 7777-77-77
+Date de fin: 7777-77-77
+Nombre de tours: 4
+Description: yyyy
+
+Participants:
+- aaa aaa (né(e) le 3333-33-33, n° fdfdf)
+- arthur seguret (né(e) le 29-08-1996, n° FR064)
+
+Tours:
+Tour 1:
+Match 1: aaa aaa 1 VS 0 arthur seguret
+Tour 2:
+Match 1: aaa aaa 1 VS 0 arthur seguret
+Tour 3:
+Match 1: aaa aaa 1 VS 0 arthur seguret
+Tour 4:
+Match 1: aaa aaa 1 VS 0 arthur seguret
+
+Classement :
+1. aaa aaa - 4 points
+2. arthur seguret - 0 points
