@@ -60,7 +60,7 @@ def main():
         elif choix == '3':
             print("\nListe des tournois:")
             for tournoi in gestionnaire.tournois:
-                # Vérifiez si le tournoi est un dictionnaire ou un objet et obtenez son nom en conséquence
+
                 if isinstance(tournoi, dict):
                     nom_tournoi = tournoi['nom']
                 else:
@@ -111,7 +111,7 @@ def main():
         elif choix == '4':
             print("\nListe des tournois:")
             for tournoi in gestionnaire.tournois:
-                # Vérifiez si le tournoi est un dictionnaire ou un objet et obtenez son nom et son lieu en conséquence
+
                 if isinstance(tournoi, dict):
                     nom_tournoi = tournoi['nom']
                     lieu_tournoi = tournoi['lieu']
@@ -191,7 +191,7 @@ def main():
         elif choix == '5':
             print("\nListe des tournois:")
             for tournoi in gestionnaire.tournois:
-                # Vérifiez si le tournoi est un dictionnaire ou un objet et obtenez son nom et son lieu en conséquence
+
                 if isinstance(tournoi, dict):
                     nom_tournoi = tournoi['nom']
                     lieu_tournoi = tournoi['lieu']
@@ -279,7 +279,7 @@ def main():
         elif choix == '6':
             print("\nListe des tournois:")
             for tournoi in gestionnaire.tournois:
-                # Vérifiez si le tournoi est un dictionnaire ou un objet et obtenez son nom en conséquence
+
                 if isinstance(tournoi, dict):
                     nom_tournoi = tournoi['nom']
                 else:
@@ -317,7 +317,7 @@ def main():
         elif choix == '7':
             print("\nListe des tournois:")
             for tournoi in gestionnaire.tournois:
-                # Vérifiez si le tournoi est un dictionnaire ou un objet et obtenez son nom en conséquence
+
                 if isinstance(tournoi, dict):
                     nom_tournoi = tournoi['nom']
                 else:
@@ -388,7 +388,7 @@ def main():
             liste_tournois = gestionnaire.afficher_liste_tournois()
             print("\nListe des tournois:")
             for tournoi in liste_tournois:
-                # Vérifiez si le tournoi est un dictionnaire ou un objet et obtenez son nom et son lieu en conséquence
+
                 if isinstance(tournoi, dict):
                     nom_tournoi = tournoi['nom']
                     lieu_tournoi = tournoi['lieu']
@@ -400,7 +400,7 @@ def main():
         elif choix == '9':
             print("\nListe des tournois:")
             for tournoi in gestionnaire.tournois:
-                # Vérifiez si le tournoi est un dictionnaire ou un objet et obtenez son nom et son lieu en conséquence
+
                 if isinstance(tournoi, dict):
                     nom_tournoi = tournoi['nom']
                     lieu_tournoi = tournoi['lieu']
@@ -413,7 +413,7 @@ def main():
             nom_tournoi = input("Entrez le nom du tournoi pour lequel vous voulez afficher les joueurs: ")
             tournoi = None
             for t in gestionnaire.tournois:
-                # Vérifiez si t est un dictionnaire ou un objet et obtenez son nom en conséquence
+
                 if isinstance(t, dict):
                     nom_t = t['nom']
                 else:

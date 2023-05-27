@@ -64,18 +64,18 @@ class GestionnaireTournois:
             joueurs = list(tournoi.joueurs)
             random.shuffle(joueurs)
             paires = [(joueurs[i], joueurs[i+1]) for i in range(0, len(joueurs), 2)]
-            tour = Tour(paires)  # Créez une instance de Tour avec les paires
-            tournoi.tours.append(tour)  # Ajoutez cette instance à la liste des tours
+            tour = Tour(paires)
+            tournoi.tours.append(tour)
             tournoi.tour_actuel += 1
             self.sauvegarder_tournois()
-            return tour  # Retournez l'instance de Tour au lieu des paires
+            return tour
         else:
             return None
 
     def saisir_resultats_tour(self, tournoi, resultat_tour):
-        tour_actuel = tournoi.tours[-1].matchs  # Accédez à la liste des matchs
+        tour_actuel = tournoi.tours[-1].matchs
         for i, resultat in enumerate(resultat_tour):
-            joueur1, joueur2 = tour_actuel[i][:2]  # Récupérez uniquement les joueurs
+            joueur1, joueur2 = tour_actuel[i][:2]
             score1, score2 = 0, 0
             if resultat == '1':
                 if isinstance(joueur1, dict):
@@ -101,7 +101,7 @@ class GestionnaireTournois:
                 score1, score2 = 0.5, 0.5
             else:
                 raise ValueError("Résultat invalide. Les valeurs valides sont '1', '2' et '0.5'.")
-            tour_actuel[i] = (joueur1, score1, joueur2, score2)  # Mettez à jour le tuple avec les scores
+            tour_actuel[i] = (joueur1, score1, joueur2, score2)
         self.sauvegarder_tournois()
 
     def lancer_tour_suivant(self, tournoi):
@@ -126,11 +126,11 @@ class GestionnaireTournois:
                 else:
                     paires.append((joueur1, joueurs_tries.pop(0)))
 
-            tour = Tour(paires)  # Créez une instance de Tour avec les paires
-            tournoi.tours.append(tour)  # Ajoutez cette instance à la liste des tours
+            tour = Tour(paires)
+            tournoi.tours.append(tour)
             tournoi.tour_actuel += 1
             self.sauvegarder_tournois()
-            return tour  # Retournez l'instance de Tour au lieu des paires
+            return tour
         else:
             return None
 
@@ -237,11 +237,9 @@ class GestionnaireTournois:
 
             for i, tour in enumerate(tournoi.tours, start=1):
                 f.write(f"Tour {i}:\n")
-                for j, match in enumerate(tour.matchs, start=1):  # Accédez à la liste des matchs de chaque tour
+                for j, match in enumerate(tour.matchs, start=1):
                     j1, score1, j2, score2 = match
 
-                    # Déterminez si les joueurs sont des dictionnaires ou des objets et obtenez leurs noms
-                    #  et prénoms en conséquence
                     if isinstance(j1, dict):
                         nom_j1 = j1['nom']
                         prenom_j1 = j1['prenom']
@@ -267,8 +265,7 @@ class GestionnaireTournois:
                         reverse=True),
                     start=1
                 ):
-                    # Déterminez si le joueur est un dictionnaire ou un objet et obtenez son nom,
-                    # prénom et points en conséquence
+
                     if isinstance(joueur, dict):
                         nom_joueur = joueur['nom']
                         prenom_joueur = joueur['prenom']
